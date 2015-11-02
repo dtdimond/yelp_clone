@@ -1,0 +1,41 @@
+%article.business
+  .row
+    .col-md-3.col-md-offset-1
+      %header
+        %h3= link_to "Mexican Food"
+      - 3.times do
+        .videos.row
+          .video.col-sm-6
+            = link_to "", nil do
+              %img(src="/assets/tacos.jpg")
+          .review.col-sm-6
+            %p Reviews (5/5)
+          .col-sm-12
+            %h6 Taco Restaurant
+        %hr
+    .col-md-3.col-md-offset-1
+      %header
+        %h3= link_to "Italian"
+      - 3.times do
+        .videos.row
+          .video.col-sm-6
+            = link_to "", nil do
+              %img(src="/assets/pasta.jpeg")
+          .review.col-sm-6
+            %p Reviews (5/5)
+          .col-sm-12
+            %h6 Pasta Restaurant
+        %hr
+    .col-md-3.col-md-offset-1
+      %header
+        %h3= link_to "Pizza"
+      - 3.times do
+        .videos.row
+          .video.col-sm-6
+            = link_to "", nil do
+              %img(src="/assets/pizza.jpeg")
+          .review.col-sm-6
+            %p Reviews (5/5)
+          .col-sm-12
+            %h6 Giordano's Restaurant
+        %hr
