@@ -1,11 +1,12 @@
 class SessionsController < ApplicationController
   def new
     redirect_to home_path if logged_in?
+    @user = User.new #for bootstrap_form_for usage
   end
 
   def create
-    user = User.find_by(email: params[:email])
-    if user && user.authenticate(params[:password])
+    user = User.find_by(email: params[:user][:email])
+    if user && user.authenticate(params[:user][:password])
       session[:user_id] = user.id
       flash[:success] = "Welcome, you're logged in!"
       redirect_to home_path
@@ -17,7 +18,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_id] = nil
-    flash[:info] = "You've logged out."
+    flash[:success] = "You've logged out."
     redirect_to root_path
   end
 end

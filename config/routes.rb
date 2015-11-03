@@ -5,12 +5,13 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'reviews#show'
-  get '/home', to: 'reviews#show'
+  root 'reviews#index'
+  get '/home', to: 'reviews#index'
 
   #Session
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
+  get '/logout', to: 'sessions#destroy'
 
   #User
   get '/register', to: 'users#new'

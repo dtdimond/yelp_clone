@@ -1,0 +1,12 @@
+%section.register.container
+  .row
+    .col-sm-10.col-sm-offset-1
+      - url = registration ? users_path : login_path
+      = bootstrap_form_for @user, url: url, layout: :horizontal, label_errors: true,
+      control_col: "col-sm-6" do |f|
+        %header
+          %h1= registration ? "Register" : "Sign In"
+        = f.email_field :email, label: "Email Address"
+        = f.password_field :password, label: "Password"
+        = f.text_field :full_name, label: "Full Name" if registration
+        = f.submit registration ? "Sign Up" : "Sign In", class: "btn btn-default col-sm-offset-2"
