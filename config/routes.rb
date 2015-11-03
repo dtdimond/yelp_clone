@@ -17,6 +17,9 @@ Rails.application.routes.draw do
   get '/register', to: 'users#new'
   resources :users, only: [:create]
 
+  #Businesses
+  resources :businesses, only: [:index, :new, :create, :show]
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

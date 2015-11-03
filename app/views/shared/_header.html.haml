@@ -1,6 +1,6 @@
 %section#top-header.row
   %h1.col-md-2.col-md-offset-2.main-header-logo
-    = link_to "Yelp"
+    = link_to "Yelp", root_path
   .col-md-4
     .row
       .col-md-12
@@ -10,9 +10,10 @@
     .row
       .col-md-12
         %ul.clearfix
-          %li= link_to "Home", nil, class: :navlink
+          %li= link_to "Home", root_path, class: :navlink
+          %li= link_to "See All Businesses", businesses_path, class: :navlink
           %li= link_to "My Profile", nil, class: :navlink
-          %li= link_to "List Business", nil, class: :navlink
+          %li= link_to "List Business", new_business_path, class: :navlink
   .col-md-3
     #user_links.pull-right
       - if logged_in?

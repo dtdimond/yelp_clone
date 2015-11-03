@@ -1,0 +1,15 @@
+%section.admin_add_video
+  .container
+    .row
+      .col-md-10.col-md-offset-1
+        = bootstrap_form_for @business, layout: :horizontal, control_col: "col-sm-6" do |f|
+          %h3 Add a New Business
+          %br
+          %fieldset
+            = f.text_field :name, label: "Business Name"
+            = f.text_area :description
+            = f.select :picture_url, [["Taco", "https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.foodpeoplewant.com%2Fwp-content%2Fuploads%2F2010%2F03%2FTacos-de-Barbacoa.jpg&f=1"],
+                                      ["Pasta", "https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fouritaliantable.com%2Fwp-content%2Fuploads%2F2010%2F06%2Fcrabmeat-pasta.jpg&f=1"],
+                                      ["Pizza", "https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.denniscummins.com%2Fwp-content%2Fuploads%2F2010%2F10%2FSupreme_pizza.jpg&f=1"]],
+              { label: "Choose a picture:" }, { class: "selectpicker" }
+            = f.submit "List the Business", class: "btn btn-default col-sm-offset-2"

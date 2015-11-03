@@ -1,0 +1,45 @@
+%article.business
+  .row
+    .col-md-3.col-md-offset-1
+      %header
+        %h1 Restaurants
+  .row
+    .col-md-3.col-md-offset-1
+      - @col1.each do |business|
+        .videos.row
+          .col-sm-12
+            = link_to "#{business.name}", business
+          .video.col-sm-6
+            = link_to "", nil do
+              %img(src="#{business.picture_url}")
+          .review.col-sm-6
+            = link_to "Reviews (10)"
+          .col-sm-12
+            %p= business.description
+        %hr
+    .col-md-3.col-md-offset-1
+      - @col2.each do |business|
+        .videos.row
+          .col-sm-12
+            = link_to "#{business.name}", business
+          .video.col-sm-6
+            = link_to "", nil do
+              %img(src="#{business.picture_url}")
+          .review.col-sm-6
+            = link_to "Reviews (10)"
+          .col-sm-12
+            %p= business.description
+        %hr
+    .col-md-3.col-md-offset-1
+      - @col3.each do |business|
+        .videos.row
+          .col-sm-12
+            = link_to "#{business.name}", business
+          .video.col-sm-6
+            = link_to "", nil do
+              %img(src="#{business.picture_url}")
+          .review.col-sm-6
+            = link_to "Reviews (10)"
+          .col-sm-12
+            %p= business.description
+        %hr
