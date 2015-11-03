@@ -59,4 +59,45 @@ describe ReviewsController do
       end
     end
   end
+
+  describe 'GET index' do
+    it 'sets the @reviews to [] if there are no reviews' do
+      get :index
+      expect(assigns(:reviews)).to be_empty
+    end
+
+    it 'sets the @reviews to [review] if there is one review' do
+      Fabricate(:review)
+      get :index
+      expect(assigns(:reviews)).to eq(Review.all)
+    end
+
+    it 'sets the @reviews to all reviews if there are 6 reviews' do
+      Fabricate(:review)
+      Fabricate(:review)
+      Fabricate(:review)
+      Fabricate(:review)
+      Fabricate(:review)
+      Fabricate(:review)
+      get :index
+      expect(assigns(:reviews)).to eq(Review.all.order(:created_at).reverse)
+    end
+
+    it 'sets the @reviews to the most recent 6 reviews if there are more than 6' do
+      r1 = Fabricate(:review, created_at: 1.minutes.ago)
+      r2 = Fabricate(:review, created_at: 2.minutes.ago)
+      r3 = Fabricate(:review, created_at: 3.minutes.ago)
+      r4 = Fabricate(:review, created_at: 4.minutes.ago)
+      r5 = Fabricate(:review, created_at: 5.minutes.ago)
+      r6 = Fabricate(:review, created_at: 9.minutes.ago)
+      r7 = Fabricate(:review, created_at: 6.minutes.ago)
+      get :index
+      expect(assigns(:reviews)).to eq([r1, r2, r3, r4, r5, r7])
+    end
+
+    it 'renders the index template' do
+      get :index
+      expect(response).to render_template :index
+    end
+  end
 end
