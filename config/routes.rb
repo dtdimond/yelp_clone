@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   #User
   get '/register', to: 'users#new'
-  resources :users, only: [:create]
+  resources :users, only: [:create, :show]
 
   #Businesses
   resources :businesses, only: [:index, :new, :create, :show]

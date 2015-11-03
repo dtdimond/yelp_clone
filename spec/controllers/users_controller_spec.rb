@@ -54,5 +54,29 @@ describe UsersController do
       end
     end
   end
+
+  describe 'GET show' do
+    it 'sets the @user to the appropriate user' do
+      user = Fabricate(:user)
+      get :show, id: user.id
+      expect(assigns(:user)).to eq(user)
+    end
+
+    it 'sets the @reviews to all the reviews for the @user' do
+      user = Fabricate(:user)
+      r1 = Fabricate(:review)
+      user.reviews << r1
+      r2 = Fabricate(:review)
+      user.reviews << r2
+      get :show, id: user.id
+      expect(assigns(:reviews)).to eq([r1,r2])
+    end
+
+    it 'renders the show template' do
+      user = Fabricate(:user)
+      get :show, id: user.id
+      expect(response).to render_template :show
+    end
+  end
 end
 

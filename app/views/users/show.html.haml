@@ -1,0 +1,32 @@
+%section.user.container
+  .row
+    .col-sm-10.col-sm-offset-1
+      %article
+        %header
+          %h2= "#{@user.full_name}'s Favorites"
+        %table.table
+          %thead
+            %tr
+              %th(width="30%") Name
+              %th(width="15%") Genre
+          %tbody
+            %tr
+              %td
+                Favorites not implemented yet.
+              %td
+                Coming soon!
+
+%section.user_reviews.container
+  .row
+    .col-sm-10.col-sm-offset-1
+      %header
+        %h3= "#{@user.full_name}'s Reviews (#{@reviews.count})"
+      %ul
+        - @reviews.each do |review|
+          %article.review
+            %li.row
+              .col-sm-2
+                %p
+                  = link_to "\"#{review.business.name}\"", business_path(review.business)
+              .col-sm-8
+                %p= review.description
