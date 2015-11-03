@@ -1,7 +1,7 @@
 %section#top-header.row
   %h1.col-md-2.col-md-offset-2.main-header-logo
     = link_to "Yelp"
-  .col-md-5
+  .col-md-4
     .row
       .col-md-12
         = form_tag "/#", class: "navbar-form", method: "get"  do
@@ -15,13 +15,18 @@
           %li= link_to "List Business", nil, class: :navlink
   .col-md-3
     #user_links.pull-right
-      %ul
-        %li.dropdown
-          %a(href="#" id="dlabel" role="button" data-toggle="dropdown" class="dropdown-toggle" data-target="#")
-            = "Welcome, Dan"
-            %b.caret
-          %ul.dropdown-menu(role="menu" aria-labelledby="dlabel")
-            %li
-              %a(href="#") Account
-              %a(href="#") Plan and Billing
-              %a(href="#") Sign Out
+      - if logged_in?
+        %ul
+          %li.dropdown
+            %a(href="#" id="dlabel" role="button" data-toggle="dropdown" class="dropdown-toggle" data-target="#")
+              = "Welcome, Dan"
+              %b.caret
+            %ul.dropdown-menu(role="menu" aria-labelledby="dlabel")
+              %li
+                %a(href="#") Account
+                %a(href="#") Plan and Billing
+                %a(href="#") Sign Out
+      - else
+        = link_to "Login", nil, class: :navlink2
+        = link_to "Register", register_path, class: :navlink2
+
