@@ -10,10 +10,10 @@
     .row
       .col-md-12
         %ul.clearfix
-          %li= link_to "Home", root_path, class: :navlink
-          %li= link_to "See All Businesses", businesses_path, class: :navlink
+          %li= link_to "All Businesses", businesses_path, class: :navlink
+          %li= link_to "+ Add Business", new_business_path, class: :navlink
+          %li= link_to "Recent Reviews", reviews_path, class: :navlink
           %li= link_to "My Profile", nil, class: :navlink
-          %li= link_to "List Business", new_business_path, class: :navlink
   .col-md-3
     #user_links.pull-right
       - if logged_in?

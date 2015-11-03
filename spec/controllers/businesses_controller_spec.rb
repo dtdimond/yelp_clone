@@ -80,4 +80,30 @@ describe BusinessesController do
       expect(response).to render_template :index
     end
   end
+
+  describe 'GET show' do
+    it 'sets @business' do
+      business = Fabricate(:business)
+      get :show, id: business.id
+      expect(assigns(:business)).not_to be_nil
+    end
+
+    it 'sets @review to a new Review' do
+      business = Fabricate(:business)
+      get :show, id: business.id
+      expect(assigns(:review)).to be_a_new Review
+    end
+
+    it 'sets @reviews to all the reviews for the business' do
+      business = Fabricate(:business)
+      get :show, id: business.id
+      expect(assigns(:reviews)).to eq(business.reviews.all)
+    end
+
+    it 'renders the show template' do
+      business = Fabricate(:business)
+      get :show, id: business.id
+      expect(response).to render_template :show
+    end
+  end
 end

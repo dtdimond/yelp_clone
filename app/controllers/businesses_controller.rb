@@ -23,5 +23,11 @@ class BusinessesController < ApplicationController
       @col3.push(third) if third
     end
   end
-end
 
+
+  def show
+    @business = Business.find(params[:id])
+    @review = Review.new
+    @reviews = @business.reviews.all if @business
+  end
+end

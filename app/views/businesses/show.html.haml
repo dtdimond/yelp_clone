@@ -1,0 +1,29 @@
+%article.video
+  .container
+    .row
+      .video_large_cover.col-sm-7.col-sm-offset-1
+        %img(src="#{@business.picture_url}")
+      .video_info.col-sm-3
+        %header
+          %h3= @business.name
+        %p= @business.description
+
+%section.reviews.container
+  .row
+    .col-sm-7.col-sm-offset-1
+      = bootstrap_form_for @review do |f|
+        = f.text_area :description, label: "Write Review", rows: 6
+        = f.hidden_field :business, value: @business.id, name: "review[business_id]"
+        = f.submit "Submit", class: "btn btn-default"
+  .row
+    .col-sm-10.col-sm-offset-1
+      %header
+        %h3= "User Reviews (#{@reviews.count})"
+      %ul
+        - @reviews.each do |review|
+          %article.review
+            %li.row
+              .col-sm-2
+                %p= "by <a href="">#{review.user.full_name}</a>"
+              .col-sm-8
+                %p= review.description

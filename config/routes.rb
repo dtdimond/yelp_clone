@@ -20,6 +20,9 @@ Rails.application.routes.draw do
   #Businesses
   resources :businesses, only: [:index, :new, :create, :show]
 
+  #Reviews
+  resources :reviews, only: [:index, :create]
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
